@@ -3,11 +3,11 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NotFound from './Components/NotFound/NotFound';
-import Appointments from './Components/Appointments/Appointments';
 import LoginForm from './Components/LoginForm/LoginForm';
-import DashboardNav from './Components/DashboardNav/DashboardNav';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Home from './Components/HomePage/Home/Home';
+import Appointments from './Components/Apponitments/Appointments/Appointments';
+import DashboardNav from './Components/AdminPortal/DashboardNav/DashboardNav';
 
 function App() {
   return (
@@ -18,10 +18,10 @@ function App() {
             <Home></Home>
           </Route>
           <Route path="/apponitments">
-            <Appointments/>
+            <Appointments />
           </Route>
           <PrivateRoute path="/admin">
-            <DashboardNav/>
+            <DashboardNav />
           </PrivateRoute>
           <Route path="/login">
             <LoginForm/>

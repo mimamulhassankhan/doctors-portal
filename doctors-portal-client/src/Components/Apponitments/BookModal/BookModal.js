@@ -5,26 +5,16 @@ const BookModal = (props) => {
     const onHide = () => {
         props.onHide();
     }
-    console.log(props);
     const {availableTime} = props.data;
 
     const [patientDetails, setPatientDetails] = useState({
         serviceName: props.data.serviceName,
-        date: '',
+        date: props.date,
         patientName: '',
         email: '',
         phone: '',
-        serviceTime: '',
-    })
-
-    const handleBlur = event => {
-        event.preventDefault();
-        const newPatient = {...patientDetails};
-        newPatient[event.target.name] = event.target.value;
-        setPatientDetails(newPatient);
-        
-    }
-    
+        serviceTime: props.data.availableTime,
+    })    
     
     const handleAppointment = (event) => {
         event.preventDefault();
@@ -45,7 +35,6 @@ const BookModal = (props) => {
             .catch(err => console.log(err));
         }
     }
-    console.log(patientDetails);
     return (
         <>
             <Modal
@@ -55,22 +44,20 @@ const BookModal = (props) => {
                 centered
                 >
                 <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                    Book Appointment
-                    </Modal.Title>
+                <Modal.Title className="text-center">{props.data.serviceName}</Modal.Title>
                 </Modal.Header>
                 <form onSubmit={handleAppointment}>
                 <Modal.Body>
                     <>
-                        <FormControl name="serviceTime" onClick={handleBlur} size="md" placeholder="Time" value={availableTime} readOnly /> 
+                        <FormControl name="time" size="md" placeholder="Time" value={availableTime} readOnly /> 
                         <br/>
-                        <FormControl name="patientName" onBlur={handleBlur} size="md" placeholder="Name" required/> 
+                        <FormControl name="patientName" onChange={e => { setPatientDetails({...patientDetails, patientName: e.target.value})}} size="md" placeholder="Name" required/> 
                         <br/>
-                        <FormControl name="phone" onBlur={handleBlur} size="md" placeholder="Phone number" required/> 
+                        <FormControl name="phone" onChange={e => { setPatientDetails({...patientDetails, phone: e.target.value})}} size="md" placeholder="Phone number" required/> 
                         <br/>
-                        <FormControl name="email" onBlur={handleBlur} size="md" placeholder="Email" required/> 
+                        <FormControl name="email" onChange={e => { setPatientDetails({...patientDetails, email: e.target.value})}} size="md" placeholder="Email" required/> 
                         <br/>
-                        <FormControl name="date" onClick={handleBlur} size="md" placeholder="mm-dd-yyyy" value={props.date} readOnly/>
+                        <FormControl name="date"  size="md" placeholder="mm-dd-yyyy" value={props.date} readOnly/>
                     </>
                 </Modal.Body>
                 <Modal.Footer>

@@ -5,8 +5,8 @@ import { Col, Nav, Row, Tab } from 'react-bootstrap';
 import AdminAppointments from '../AdminAppointments/AdminAppointments';
 import AdminDashboard from '../AdminDashboard/AdminDashboard';
 import { connect } from 'react-redux';
-import { addLoggedinUser } from '../../Redux/Actions/PortalActions';
 import { handleSignOut } from './signOutManager';
+import { addLoggedinUser } from '../../../Redux/Actions/PortalActions';
 
 const DashboardNav = ({user, addLoggedinUser}) => {
     const signOut = () => {

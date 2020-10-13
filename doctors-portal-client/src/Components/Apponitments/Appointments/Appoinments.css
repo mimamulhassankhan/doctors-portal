@@ -1,0 +1,5 @@
+.main-container {
+    height: 550px;
+    background-image: url('/images/ChairBg.png');
+    background-position: cover;
+  }

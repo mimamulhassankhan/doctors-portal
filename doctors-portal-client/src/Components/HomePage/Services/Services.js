@@ -24,8 +24,8 @@ const Services = () => {
                 <h2 className="mt-2 pt-3">Services We Provide</h2> 
                 <Row className="mt-5 pt-3">
                     {
-                        businessService.map(service => 
-                            <Col md={4}>
+                        businessService.map((service, idx )=> 
+                            <Col md={4} key={idx}>
                                 <div className="p-1">
                                     <Image width={50} src={service.image} alt="im" fluid/>
                                     <h6 className="mt-4">{service.name}</h6>

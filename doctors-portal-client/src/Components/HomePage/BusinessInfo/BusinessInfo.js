@@ -31,8 +31,8 @@ const BusinessInfo = () => {
         <section>
             <Row>
                 {
-                    businessInfo.map(info => 
-                    <Col md={4} className="text-white">
+                    businessInfo.map((info, idx) => 
+                    <Col md={4} key={idx} className="text-white">
                         <div style={{minHeight: '120px'}} className={`bg-${info.bgColor} rounded text-center p-1 d-flex justify-content-center align-items-center`}>
                             <div>
                                 <FontAwesomeIcon  icon={ info.icon } size="3x"/>

@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Dropdown, Row, Table } from 'react-bootstrap';
 import { faCalendar, faPen} from '@fortawesome/free-solid-svg-icons';
-import { services } from '../../FakeData/services';
 
 const AdminDashboard = () => {
     const [patients, setPatients] = useState([]);

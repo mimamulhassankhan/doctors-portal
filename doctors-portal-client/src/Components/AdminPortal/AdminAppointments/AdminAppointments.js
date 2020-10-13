@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Dropdown, DropdownButton, Form, Row, Table } from 'react-bootstrap';
+import { Col, Form, Row, Table } from 'react-bootstrap';
 import Calendar from 'react-calendar';
 
 const AdminAppointments = () => {
