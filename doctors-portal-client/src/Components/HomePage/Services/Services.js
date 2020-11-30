@@ -18,7 +18,7 @@ const businessService = [
 
 const Services = () => {
     return (
-        <section style={{ height: '600px'}} className="d-flex align-items-center">
+        <section  className="d-flex align-items-center">
             <Container className="text-center">
                 <p style={{ color: '#1CC7C1'}} className="mt-3 mb-3">Our Services</p>
                 <h2 className="mt-2 pt-3">Services We Provide</h2> 

@@ -35,6 +35,7 @@ const LoginForm = ({user, addLoggedinUser}) => {
     }
 
     const handleSubmit = event =>{
+        event.preventDefault();
         if(userInfo.email && userInfo.password){
             signInWithEmailAndPassword(userInfo.email, userInfo.password)
             .then(res => {
@@ -43,12 +44,11 @@ const LoginForm = ({user, addLoggedinUser}) => {
                 history.replace(from);
             })
         }
-        event.preventDefault();
     }
     return (
         <Container style={{height: '100vh'}} className="d-flex align-items-center justify-content-between">
             <Row>
-                <Col md={6}>
+                <Col md={4}>
                     <form  onSubmit={handleSubmit} className="rounded shadow p-2">
                         <h1 className="text-center">Login</h1>
                         <TextField name="email" type="email" onBlur={handleBlur} margin="normal" label="Enter email" fullWidth/>
@@ -57,7 +57,7 @@ const LoginForm = ({user, addLoggedinUser}) => {
                         <Button type="submit" className="btn-block mt-5" variant="info">Sign In</Button>
                     </form>
                 </Col>
-                <Col md={6}>
+                <Col md={4}>
                     <div>
                         <Image width={200} src="/images/login.png" alt="login" fluid/>
                     </div>

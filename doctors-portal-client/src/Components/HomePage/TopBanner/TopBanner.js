@@ -6,7 +6,7 @@ const TopBanner = () => {
     return (
         <>
             <Jumbotron className="bg-transparent" style={{ padding: '0px'}}>
-                    <Row style={{height: '500px'}} className="d-flex align-items-center justify-content-between">
+                    <Row className="d-flex align-items-center justify-content-between">
                         <Col md={5}>
                             <h1 className="display-5 font-weight-bold">Your New Smile <br/>Starts Here</h1>
                             <p className="text-secondary">

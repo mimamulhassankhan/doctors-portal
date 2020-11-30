@@ -14,6 +14,7 @@ export const signInWithEmailAndPassword = (email, pass) => {
         newUserInfo.name = newUserInfo.displayName;
         return newUserInfo
       }).catch(err => {
+        console.log(err);
         const newUserInfo = {};
         newUserInfo.error = err.message;
         newUserInfo.success = false;

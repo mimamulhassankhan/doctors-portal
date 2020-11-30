@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Footer from '../../Shared/Footer/Footer';
 import Titlebar from '../../Shared/Titlebar/Titlebar';
 import AppointmentContainer from '../AppointmentContainer/AppointmentContainer'
@@ -15,7 +15,6 @@ const Appointments = () => {
     return (
         <>
             <div className="main-container">
-                <Titlebar></Titlebar>
                 <AppointmentContainer date={selectedDate.toDateString()} handleChangeDate={handleChangeDate}></AppointmentContainer>
             </div>
             <BookAppointment date={selectedDate.toDateString()}></BookAppointment>

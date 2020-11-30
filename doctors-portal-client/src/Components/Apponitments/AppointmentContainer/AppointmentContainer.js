@@ -9,7 +9,7 @@ const AppointmentContainer = ({date, handleChangeDate}) => {
             <Container>
                 <Row style={{height: '500px'}} className="d-flex align-items-center justify-content-between">
                     <Col md={5}>
-                        <h1 className="display-5 font-weight-bold">Appointments</h1>
+                        <h1 className="display-5 font-weight-bold">Select Date</h1>
                         <div className="mt-5">
                             <Calendar onChange={handleChangeDate} value={new Date(date)} className="rounded shadow p-3"/>
                         </div>
