@@ -1,0 +1,25 @@
+  .modes {
+    margin-bottom: 1rem;
+  }
+  
+  .fade-enter .transition {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  .fade-enter-active .transition {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  .fade-exit .transition {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  .fade-exit-active .transition {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  .fade-enter-active .transition,
+  .fade-exit-active .transition {
+    transition: opacity 500ms, transform 500ms;
+  }
+  

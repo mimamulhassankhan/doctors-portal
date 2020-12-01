@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import AppointmentContainer from '../AppointmentContainer/AppointmentContainer'
-import BookAppointment from '../BookAppointment/BookAppointment';
 import './Appoinments.css';
 
 const Appointments = () => {
@@ -12,10 +11,10 @@ const Appointments = () => {
 
     return (
         <>
-            <div className="main-container">
+            <div className="main-container transition">
                 <AppointmentContainer date={selectedDate.toDateString()} handleChangeDate={handleChangeDate}></AppointmentContainer>
             </div>
-            <BookAppointment date={selectedDate.toDateString()}></BookAppointment>
+            {/* <BookAppointment date={selectedDate.toDateString()}></BookAppointment> */}
         </>
     );
 };

@@ -1,20 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, FormControl, Modal } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { fakeDoctors } from '../../../FakeData/fakeDoctors';
 
 const BookModal = (props) => {
     const onHide = () => {
         props.onHide();
     }
-
+    const {patientName, patientEmail, docId, appointmentDate} = props.appointmentInfo;
     const [patientDetails, setPatientDetails] = useState({
-        patientName: '',
-        email: '',
-        phone: '',
-    })    
-    
+        ...props.appointmentInfo,
+        patientPhone: '',
+        patientName: props.appointmentInfo.patientName
+    });
+    const [docDetails, setDocDetails] = useState({});
+    useEffect(() => {
+        const [selectedDoc] = fakeDoctors.filter(doc => doc.docId === docId);
+        setDocDetails(selectedDoc);
+    }, [docId]);
+
     const handleAppointment = (event) => {
         event.preventDefault();
-        if(patientDetails.patientName && patientDetails.email && patientDetails.phone){
+        if(patientDetails.patientName && patientDetails.patientEmail && patientDetails.patientPhone){
             const appointmentInfo = {...patientDetails, bookTime: new Date()};
 
             fetch('https://shrouded-spire-96660.herokuapp.com/addAppointment', {
@@ -31,6 +38,7 @@ const BookModal = (props) => {
             .catch(err => console.log(err));
         }
     }
+    console.log(patientDetails);
     return (
         <>
             <Modal
@@ -45,15 +53,17 @@ const BookModal = (props) => {
                 <form onSubmit={handleAppointment}>
                 <Modal.Body>
                     <>
-                        {/* <FormControl name="time" size="md" placeholder="Time" value={availableTime} readOnly />  */}
+                        <FormControl name="department" size="md" placeholder="Department" value={docDetails.department} readOnly /> 
                         <br/>
-                        <FormControl name="patientName" onChange={e => { setPatientDetails({...patientDetails, patientName: e.target.value})}} size="md" placeholder="Name" required/> 
+                        <FormControl name="docname" size="md" placeholder="Doctor Name" value={docDetails.name} readOnly /> 
                         <br/>
-                        <FormControl name="phone" onChange={e => { setPatientDetails({...patientDetails, phone: e.target.value})}} size="md" placeholder="Phone number" required/> 
+                        <FormControl name="patientName" onChange={e => { setPatientDetails({...patientDetails, patientName: e.target.value})}} size="md" placeholder="Name" value={patientName} required/> 
                         <br/>
-                        <FormControl name="email" onChange={e => { setPatientDetails({...patientDetails, email: e.target.value})}} size="md" placeholder="Email" required/> 
+                        <FormControl name="patientPhone" onChange={e => { setPatientDetails({...patientDetails, patientPhone: e.target.value})}} size="md" placeholder="Phone number" required/> 
                         <br/>
-                        {/* <FormControl name="date"  size="md" placeholder="mm-dd-yyyy" value={props.date} readOnly/> */}
+                        <FormControl name="patientEmail" size="md" placeholder="Email" value={patientEmail} readOnly/> 
+                        <br/>
+                        <FormControl name="appointmentDate"  size="md" placeholder="appointmentDate" value={appointmentDate} readOnly/>
                     </>
                 </Modal.Body>
                 <Modal.Footer>
@@ -65,4 +75,10 @@ const BookModal = (props) => {
     );
 };
 
-export default BookModal;
+const mapStateToProps = state => {
+    return {
+        appointmentInfo: state.appointmentInfo
+    }
+}
+
+export default connect(mapStateToProps)(BookModal);

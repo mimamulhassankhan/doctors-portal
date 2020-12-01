@@ -14,7 +14,7 @@ const DoctorSearch = ({setSelectedDept, appointmentInfo, mapDispatchToProps}) =>
     }
 
     return (
-        <Container style={{backgroundColor: '#8a8c8c', height: '200px'}} className="d-flex mx-auto p-3 align-items-center">
+        <Container style={{backgroundColor: '#8a8c8c', height: '200px'}} className="transition d-flex mx-auto p-3 align-items-center">
             <Form.Group>
                 <Form.Label>Search by departments</Form.Label>
                 <DropdownButton

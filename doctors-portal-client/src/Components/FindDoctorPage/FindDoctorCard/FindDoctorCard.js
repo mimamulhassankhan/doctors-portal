@@ -2,21 +2,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Card, Col, Image, Row } from 'react-bootstrap';
 import {faPhone, faComments, faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
-import { useHistory } from 'react-router-dom';
 import { updateDocId } from '../../../Redux/Actions/PortalActions';
 import { connect } from 'react-redux';
 
-const FindDoctorCard = ({selectedDoc, appointmentInfo, updateDocId}) => {
-
-    const history = useHistory();
-    const {docId, docPic, name, department, degree} = selectedDoc;
+const FindDoctorCard = ({selectedDoc, appointmentInfo, updateDocId, handlePageState}) => {
+    const {docId, docPic, name, department } = selectedDoc;
 
     const handleFindDoctor = (e) => {
         e.preventDefault();
         updateDocId(docId);
-        history.push('/appointment');
+        handlePageState(pageState => !pageState);
     }
-
     return (
         <Card style={{ width: '22rem' }} className="m-1 p-1 text-center" >
             <Image className="mx-auto" width={100} height={100} src={docPic} roundedCircle fluid/>

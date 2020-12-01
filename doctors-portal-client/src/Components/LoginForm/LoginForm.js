@@ -6,10 +6,10 @@ import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Label } from 'reactstrap';
-import { addLoggedinUser } from '../../Redux/Actions/PortalActions';
+import { addLoggedinUser, updatePatientInfo } from '../../Redux/Actions/PortalActions';
 import { defaulftLoggingFramework, signInWithEmailAndPassword } from './LoginManager';
 
-const LoginForm = ({user, addLoggedinUser}) => {
+const LoginForm = ({user, addLoggedinUser, updatePatientInfo}) => {
     defaulftLoggingFramework();
 
     const [userInfo, setUserInfo] = useState({
@@ -42,7 +42,9 @@ const LoginForm = ({user, addLoggedinUser}) => {
             signInWithEmailAndPassword(userInfo.email, userInfo.password)
             .then(res => {
                 setUserInfo(res);
+                console.log(res);
                 addLoggedinUser(res);
+                updatePatientInfo(res.displayName, res.email);
                 history.replace(from);
             })
         }
@@ -77,7 +79,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    addLoggedinUser : addLoggedinUser
+    addLoggedinUser : addLoggedinUser,
+    updatePatientInfo: updatePatientInfo
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

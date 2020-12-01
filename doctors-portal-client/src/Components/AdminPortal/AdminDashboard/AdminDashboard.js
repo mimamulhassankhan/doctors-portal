@@ -5,6 +5,7 @@ import { faCalendar, faPen} from '@fortawesome/free-solid-svg-icons';
 
 const AdminDashboard = () => {
     const [patients, setPatients] = useState([]);
+    let i=0;
 
     useEffect(() => {
         fetch('https://shrouded-spire-96660.herokuapp.com/getPatients')
@@ -96,11 +97,11 @@ const AdminDashboard = () => {
                         {
                             patients.map(pt => 
                             <tr key={pt._id}>
-                                <td>1</td>
-                                <td>{pt.date}</td>
-                                <td>{pt.serviceTime}</td>
+                                <td>{++i}</td>
+                                <td>{pt.appointmentDate}</td>
+                                <td>{pt.docId}</td>
                                 <td>{pt.patientName}</td>
-                                <td>{pt.phone}</td>
+                                <td>{pt.patientPhone}</td>
                                 <td>
                                     <Button variant="success">View</Button>
                                 </td>

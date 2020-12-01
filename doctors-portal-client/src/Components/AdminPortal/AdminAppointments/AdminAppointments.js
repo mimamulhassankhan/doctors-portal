@@ -6,6 +6,7 @@ const AdminAppointments = () => {
     const [patientOnDate, setPatientOnDate] = useState([]);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [patients, setPatients] = useState([]);
+    let i=1;
 
     useEffect(() => {
         fetch('https://shrouded-spire-96660.herokuapp.com/getPatients')
@@ -18,7 +19,7 @@ const AdminAppointments = () => {
     }
 
     useEffect(() => {
-        const matchedPatiens = patients.filter(pt => pt.date === selectedDate.toDateString().toString());
+        const matchedPatiens = patients.filter(pt => pt.appointmentDate === selectedDate.toDateString().toString());
         setPatientOnDate(matchedPatiens);
     }, [selectedDate, patients]);
 
@@ -39,7 +40,7 @@ const AdminAppointments = () => {
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Schedule</th>
+                            <th>Doctor</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -47,9 +48,9 @@ const AdminAppointments = () => {
                         {
                             patientOnDate && patientOnDate.map(pt => 
                             <tr>
-                                <td>1</td>
+                                <td>{i++}</td>
                                 <td>{pt.patientName}</td>
-                                <td>{pt.serviceTime}</td>
+                                <td>{pt.docId}</td>
                                 <td>
                                     <Form.Control as="select" defaultValue="Not Visited">
                                         <option>Not Visited</option>

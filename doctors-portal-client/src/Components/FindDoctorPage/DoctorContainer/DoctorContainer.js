@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import { fakeDoctors } from '../../../FakeData/fakeDoctors';
 import FindDoctorCard from '../FindDoctorCard/FindDoctorCard';
 
-const DoctorContainer = ({selectedDept}) => {
+const DoctorContainer = ({selectedDept, handlePageState}) => {
 
     const [filterByDeptDoctors, setFilterByDeptDoctors] = useState([]);
 
@@ -13,9 +13,9 @@ const DoctorContainer = ({selectedDept}) => {
     },[selectedDept])
 
     return (
-        <Container className="d-flex flex-wrap justify-content-between"> 
+        <Container className="d-flex transition flex-wrap justify-content-between"> 
             {
-                filterByDeptDoctors.map(selectedDoc => <FindDoctorCard key={selectedDoc.docId} selectedDoc={selectedDoc}></FindDoctorCard>)
+                filterByDeptDoctors.map(selectedDoc => <FindDoctorCard handlePageState={handlePageState} key={selectedDoc.docId} selectedDoc={selectedDoc}></FindDoctorCard>)
             }
         </Container>
     );

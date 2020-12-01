@@ -19,11 +19,10 @@ export const updateAppointmentDate = appointmentDate => {
     }
 }
 
-export const updatePatientInfo = (patientName, patientEmail, patientPhone ) => {
+export const updatePatientInfo = (patientName, patientEmail ) => {
     return{
         type: UPDATE_PATIENT_INFO,
         patientName,
-        patientEmail,
-        patientPhone
+        patientEmail
     }    
 }
