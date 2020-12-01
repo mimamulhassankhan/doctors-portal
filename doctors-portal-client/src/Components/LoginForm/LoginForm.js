@@ -1,3 +1,5 @@
+import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { TextField } from '@material-ui/core';
 import React, { useState } from 'react';
 import { Button, Col, Container, Image, Row } from 'react-bootstrap';
@@ -46,10 +48,10 @@ const LoginForm = ({user, addLoggedinUser}) => {
         }
     }
     return (
-        <Container style={{height: '100vh'}} className="d-flex align-items-center justify-content-between">
-            <Row>
-                <Col md={4}>
-                    <form  onSubmit={handleSubmit} className="rounded shadow p-2">
+        <Container style={{height: '85vh'}} className="align-items-center">
+            <Row className="d-flex align-items-center justify-content-between">
+                <Col md={6}>
+                    <form style={{width: '400px', border : '1px solid #04020200', boxShadow : 'gray'}}  onSubmit={handleSubmit} className="rounded shadow p-2">
                         <h1 className="text-center">Login</h1>
                         <TextField name="email" type="email" onBlur={handleBlur} margin="normal" label="Enter email" fullWidth/>
                         <TextField name="password" onBlur={handleBlur} label="Enter password" margin="normal" type="Password" fullWidth/>
@@ -57,10 +59,10 @@ const LoginForm = ({user, addLoggedinUser}) => {
                         <Button type="submit" className="btn-block mt-5" variant="info">Sign In</Button>
                     </form>
                 </Col>
-                <Col md={4}>
-                    <div>
-                        <Image width={200} src="/images/login.png" alt="login" fluid/>
-                    </div>
+                <Col md={6} style={{backgroundImage: `url('/images/login.png')`, backgroundSize: 'cover'}}>
+                    <Button onClick={() => history.push('/doctorregistration')} className="my-2" variant="primary"> <FontAwesomeIcon  icon={faUser}/> Register As a Doctor</Button>
+                    <br/>
+                    <Button onClick={() => history.push('/patientregistration')} className="my-2" variant="success"> <FontAwesomeIcon  icon={faUser}/> Register As a Patient</Button>
                 </Col>
             </Row>
         </Container>

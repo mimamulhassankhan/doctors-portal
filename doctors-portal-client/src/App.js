@@ -13,6 +13,9 @@ import Titlebar from './Components/Shared/Titlebar/Titlebar';
 import CombainedLogin from './Components/Shared/CombinedLoginPage/CombainedLogin';
 import PatientPortalIndex from './Components/PatientPortal/PatientPortalIndex/PatientPortalIndex';
 import DoctorPortalIndex from './Components/DoctorPortal/DoctorPortalIndex/DoctorPortalIndex';
+import DoctorRegistration from './Components/Shared/Registration/DoctorRegistration/DoctorRegistration';
+import PatientRegistration from './Components/Shared/Registration/PatientRegistration/PatientRegistration';
+import Footer from './Components/Shared/Footer/Footer';
 
 function App() {
   return (
@@ -38,6 +41,12 @@ function App() {
           <PrivateRoute path="/doctorportal">
             <DoctorPortalIndex />
           </PrivateRoute>
+          <Route path="/doctorregistration">
+            <DoctorRegistration />
+          </Route>
+          <Route path="/patientregistration">
+            <PatientRegistration />
+          </Route>
           <Route path="/superlogin">
             <CombainedLogin/>
           </Route>
@@ -48,6 +57,7 @@ function App() {
             <NotFound/>
           </Route>
         </Switch>
+        <Footer/>
       </Router>
     </>
   );

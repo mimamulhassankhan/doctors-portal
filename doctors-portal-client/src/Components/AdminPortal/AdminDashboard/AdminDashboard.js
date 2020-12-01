@@ -7,7 +7,7 @@ const AdminDashboard = () => {
     const [patients, setPatients] = useState([]);
 
     useEffect(() => {
-        fetch('https://pure-inlet-43609.herokuapp.com/getPatients')
+        fetch('http://localhost:5000/getPatients')
         .then(res => res.json())
         .then(data => setPatients(data));
     },[])
@@ -23,7 +23,7 @@ const AdminDashboard = () => {
                     <div className="p-1">
                         <Row className="bg-info p-3 text-white rounded align-items-center"> 
                             <Col md={4}>
-                                <h1>09</h1>
+                                <h6>Not yet ready</h6>
                             </Col>
                             <Col md={4}>
                                 <p>Appointments <br/> Pending</p>
@@ -35,7 +35,7 @@ const AdminDashboard = () => {
                     <div className="p-1">
                         <Row className="bg-warning p-3 text-white rounded align-items-center"> 
                             <Col md={4}>
-                                <h1>{todayAppointments.length}</h1>
+                            <h6>Not yet ready</h6>
                             </Col>
                             <Col md={4}>
                                 <p>Today's <br/> Apponitments</p>

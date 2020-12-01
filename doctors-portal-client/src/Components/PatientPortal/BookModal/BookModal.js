@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Button, FormControl, Modal } from 'react-bootstrap';
-import { useHistory } from 'react-router-dom';
 
 const BookModal = (props) => {
-    const history = useHistory();
     const onHide = () => {
         props.onHide();
     }
@@ -16,10 +14,10 @@ const BookModal = (props) => {
     
     const handleAppointment = (event) => {
         event.preventDefault();
-        if(patientDetails.serviceName && patientDetails.date && patientDetails.serviceTime){
+        if(patientDetails.patientName && patientDetails.email && patientDetails.phone){
             const appointmentInfo = {...patientDetails, bookTime: new Date()};
 
-            fetch('https://pure-inlet-43609.herokuapp.com/addAppointment', {
+            fetch('http://localhost:5000/addAppointment', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(appointmentInfo)
@@ -42,7 +40,7 @@ const BookModal = (props) => {
                 centered
                 >
                 <Modal.Header closeButton>
-                <Modal.Title className="text-center">Woow Title</Modal.Title>
+                <Modal.Title className="text-center">Appointment Form</Modal.Title>
                 </Modal.Header>
                 <form onSubmit={handleAppointment}>
                 <Modal.Body>

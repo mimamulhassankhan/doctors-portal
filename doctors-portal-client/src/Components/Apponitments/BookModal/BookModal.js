@@ -21,7 +21,7 @@ const BookModal = (props) => {
         if(patientDetails.serviceName && patientDetails.date && patientDetails.serviceTime){
             const appointmentInfo = {...patientDetails, bookTime: new Date()};
 
-            fetch('https://pure-inlet-43609.herokuapp.com/addAppointment', {
+            fetch('http://localhost:5000/addAppointment', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(appointmentInfo)
