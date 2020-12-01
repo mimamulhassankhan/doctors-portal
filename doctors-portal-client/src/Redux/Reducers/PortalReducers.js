@@ -1,7 +1,14 @@
-import { ADD_USER } from "../Actions/PortalActions";
+import { ADD_USER, UPDATE_APPOINTMENT_DATE, UPDATE_DOC_ID } from "../Actions/PortalActions";
 
 const initialState = {
-    user : []
+    user : [],
+    appointmentInfo: {
+        docId: '',
+        appointmentDate: '',
+        patientName: '',
+        patientEmail: '',
+        patientPhone: ''
+    }
 }
 
 export const portalReducer = (state = initialState, action) => {
@@ -11,6 +18,22 @@ export const portalReducer = (state = initialState, action) => {
             return {
                 ...state,
                 user : newUser
+            }
+        case UPDATE_DOC_ID:
+            return {
+                ...state,
+                appointmentInfo: {
+                    ...state.appointmentInfo,
+                    docId: action.docId
+                }
+            }
+        case UPDATE_APPOINTMENT_DATE:
+            return {
+                ...state,
+                appointmentInfo: {
+                    ...state.appointmentInfo,
+                    appointmentDate: action.appointmentDate
+                }
             }
         default:
             return state;

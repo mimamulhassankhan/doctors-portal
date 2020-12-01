@@ -1,11 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcaseMedical, faProcedures, faUserCog } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import './CombainedLogin.css';
+import { connect } from 'react-redux';
 
-const CombainedLogin = () => {
+const CombainedLogin = ({appointmentInfo}) => {
     const history = useHistory();
 
     const loginUserType = [
@@ -45,6 +46,8 @@ const CombainedLogin = () => {
             history.push('/patientportal');
         }
     }
+
+    console.log(appointmentInfo);
     return (
         <section className="combained-login-main d-flex justify-content-center align-items-center">
             <Row>
@@ -67,4 +70,10 @@ const CombainedLogin = () => {
     );
 };
 
-export default CombainedLogin;
+const mapStateToProps = state => {
+    return {
+        appointmentInfo : state.appointmentInfo
+    }
+}
+
+export default connect(mapStateToProps)(CombainedLogin);

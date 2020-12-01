@@ -15,7 +15,7 @@ const DoctorContainer = ({selectedDept}) => {
     return (
         <Container className="d-flex flex-wrap justify-content-between"> 
             {
-                filterByDeptDoctors.map(selectedDoc => <FindDoctorCard key={selectedDoc.id} selectedDoc={selectedDoc}></FindDoctorCard>)
+                filterByDeptDoctors.map(selectedDoc => <FindDoctorCard key={selectedDoc.docId} selectedDoc={selectedDoc}></FindDoctorCard>)
             }
         </Container>
     );

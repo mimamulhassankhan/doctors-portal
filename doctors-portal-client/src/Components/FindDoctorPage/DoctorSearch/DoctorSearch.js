@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Dropdown, DropdownButton, Form } from 'react-bootstrap';
 import { departments } from '../../../FakeData/departments';
 
-const DoctorSearch = ({setSelectedDept}) => {
+const DoctorSearch = ({setSelectedDept, appointmentInfo, mapDispatchToProps}) => {
 
     const [hospitalDepts, setHospitalDepts] = useState([]);
     useEffect(() => {
