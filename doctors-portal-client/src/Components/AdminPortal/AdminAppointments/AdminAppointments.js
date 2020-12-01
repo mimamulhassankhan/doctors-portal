@@ -8,7 +8,7 @@ const AdminAppointments = () => {
     const [patients, setPatients] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/getPatients')
+        fetch('https://shrouded-spire-96660.herokuapp.com/getPatients')
         .then(res => res.json())
         .then(data => setPatients(data));
     },[])
